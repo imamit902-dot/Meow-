@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen</title>
+  </head>
+  <body>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday Misty</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+text-align:center;
+background:linear-gradient(45deg,#141e30,#243b55);
+color:white;
+overflow:hidden;
+}
+
+/* title */
+
+h1{
+margin-top:40px;
+font-size:50px;
+color:#ffd700;
+text-shadow:0 0 25px #ff00ff;
+}
+
+/* cake */
+
+#cake{
+font-size:130px;
+margin-top:40px;
+}
+
+/* buttons */
+
+button{
+padding:14px 28px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:#ff2e63;
+color:white;
+cursor:pointer;
+margin:10px;
+box-shadow:0 0 20px #ff2e63;
+}
+
+/* slideshow */
+
+.slideshow{
+width:260px;
+height:260px;
+margin:20px auto;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 0 20px white;
+}
+
+.slideshow img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* sakura petals */
+
+.petal{
+position:absolute;
+width:10px;
+height:10px;
+background:pink;
+border-radius:50%;
+animation:fall 8s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10px) rotate(0deg);}
+100%{transform:translateY(100vh) rotate(360deg);}
+}
+
+/* fireworks */
+
+.fire{
+position:absolute;
+width:8px;
+height:8px;
+border-radius:50%;
+animation:boom 1.5s linear infinite;
+}
+
+@keyframes boom{
+0%{transform:scale(1);opacity:1;}
+100%{transform:scale(5);opacity:0;}
+}
+
+/* footer */
+
+.footer{
+position:fixed;
+bottom:10px;
+width:100%;
+font-size:16px;
+color:#00ffd5;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🎉 Happy Birthday Misty 🎉</h1>
+
+<div id="cake">🎂</div>
+
+<button onclick="cutCake()">Cut Cake 🎂</button>
+
+<div class="slideshow">
+<img id="slide" src="https://picsum.photos/300/300?random=1">
+</div>
+
+<!-- YouTube Music -->
+
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/3_g2un5M350?autoplay=1&loop=1&playlist=3_g2un5M350"
+allow="autoplay">
+</iframe>
+
+<div class="footer">⚡ Coding by Amit ⚡</div>
+
+<script>
+
+/* cake cut */
+
+function cutCake(){
+document.getElementById("cake").innerHTML="🍰";
+createFireworks();
+}
+
+/* fireworks */
+
+function createFireworks(){
+for(let i=0;i<60;i++){
+let f=document.createElement("div");
+f.className="fire";
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*100+"vh";
+f.style.background="hsl("+Math.random()*360+",100%,50%)";
+document.body.appendChild(f);
+}
+}
+
+/* sakura petals */
+
+for(let i=0;i<40;i++){
+let p=document.createElement("div");
+p.className="petal";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(Math.random()*5+5)+"s";
+document.body.appendChild(p);
+}
+
+/* artwork slideshow */
+
+let images=[
+"https://picsum.photos/300/300?random=1",
+"https://picsum.photos/300/300?random=2",
+"https://picsum.photos/300/300?random=3",
+"https://picsum.photos/300/300?random=4"
+];
+
+let i=0;
+
+setInterval(function(){
+i=(i+1)%images.length;
+document.getElementById("slide").src=images[i];
+},3000);
+
+</script>
+
+</body>
+</html>
